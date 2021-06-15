@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Instructions to run this APP
+
+To run this App you will need to sign-in into Pipefy and create a new API token in order to use Pipefy's public API.
+Then, create a .env file and add these 2 variables in it:
+
+```
+REACT_APP_PIPEFY_API_URL=https://app.pipefy.com/queries
+REACT_APP_PIPEFY_API_TOKEN=<YOUR_API_TOKEN>
+```
+
+# Create React App Instructions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
