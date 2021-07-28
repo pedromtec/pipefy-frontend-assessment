@@ -1,20 +1,51 @@
-# Instructions to run this APP
+# The Assessment
+This assessment was build to validate your developer skills using our main stack (React + GraphQL). Keep in mind that UI and performance walk together to deliver the best experience.
 
-To run this App you will need to sign-in into Pipefy and create a new API token in order to use Pipefy's public API.
-Then, create a .env file and add these 2 variables in it:
+Your main objective is to deliver a list of Pipes (sorted by name and paginated), with the number of cards that belong to it, loading more elements at an user's interaction (like a button click or scroll). Once the pipes are totally listed, we want to see a small user interaction to load all Pipe's cards in a button click, loading this information inside a modal;
 
-```
-REACT_APP_PIPEFY_API_URL=https://app.pipefy.com/queries
-REACT_APP_PIPEFY_API_TOKEN=<YOUR_API_TOKEN>
-```
+You don't need to develop the best layout in this phase. Feel free to create your visual representation of Pipefy or replicate the visual structure that we already have.
 
-# Create React App Instructions
+### Visual Representation
+![image](https://user-images.githubusercontent.com/5097397/127360349-7231b194-0a8c-4c31-af6c-886005bc8d6c.png)
+
+**OBS: You don't need to develop the favorite and "add new pipe" interactions. Don't worry about the Pipe's icons.**
+
+## What we will evaluate
+- A semantic HTML;
+- A well structured CSS (feel free to use any lib, preprocessor or pure CSS);
+- How clean and readable your code is;
+- Your vision about frontend's architecture;
+
+## Bonus
+- TypeScript usage;
+- Unit and/or integration tests;
+- Usage of a state management layer (like Redux, Mobx or even GraphQL cache);
+- Functional programming approach;
+
+# App Instructions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+To run this App you will need to create a .env file and add these 2 variables in it:
 
-In the project directory, you can run:
+```
+REACT_APP_PIPEFY_API_URL=https://app.pipefy.com/queries
+REACT_APP_PIPEFY_API_TOKEN=<API_TOKEN>
+```
+
+The `API_TOKEN` was sent in the same email that you received with this assessment's link.
+
+## API
+You can access our API documentation with the below link:
+
+[Pipefy's GraphQL Playground](https://app.pipefy.com/graphiql)
+
+## Tips
+1. You can use the `organization` query to load all pipes. The other (cards) query is very simple to find in our documentation;
+2. We already configured Apollo Provider for your;
+3. Use the `@apollo/client` dependency to extract the `useQuery` hook, and the `gql`;  
+
+## Available Scripts
 
 ### `yarn start`
 
@@ -28,26 +59,6 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
