@@ -4,7 +4,6 @@ import type { QueryOrganization, QueryOrganizationVariables } from '../../graphq
 import { Pipe } from '../Pipe';
 import { Wrap, WrapItem } from "@chakra-ui/react"
 
-
 const organizationId = '300562393'
 
 export function PipesList() {
@@ -20,9 +19,9 @@ export function PipesList() {
   }
 
   return (
-      <Wrap spacing="30px">
+      <Wrap spacing="8" justifyContent="center" alignItems="center" height="100%" display="flex">
         {data?.organization.pipes.map(pipe => (
-            <WrapItem key={pipe.id}><Pipe name={pipe.name} cards_count={pipe.cards_count} color={pipe.color} /></WrapItem>
+            <WrapItem key={pipe.id}><Pipe id={pipe.id} name={pipe.name} cards_count={pipe.cards_count} color={pipe.color} /></WrapItem>
         ))}
       </Wrap>    
   );
