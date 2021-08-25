@@ -1,10 +1,11 @@
+import { Container } from "@chakra-ui/react";
 import { PipesList } from "./components/PipesList";
 
 function App() {
   return (
-    <div className="App">
+    <Container maxW="container.xl" >
       <PipesList />
-    </div>
+    </Container>
   );
 }
 

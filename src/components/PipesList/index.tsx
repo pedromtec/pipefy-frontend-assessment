@@ -2,7 +2,8 @@ import { useQuery } from '@apollo/client'
 import { QUERY_ORGANIZATION } from '../../graphql/queries/organization';
 import type { QueryOrganization, QueryOrganizationVariables } from '../../graphql/types';
 import { Pipe } from '../Pipe';
-import * as S from './styles'
+import { Wrap, WrapItem } from "@chakra-ui/react"
+
 
 const organizationId = '300562393'
 
@@ -19,13 +20,11 @@ export function PipesList() {
   }
 
   return (
-    <S.Wrapper>
-      <S.ListContainer>
+      <Wrap spacing="30px">
         {data?.organization.pipes.map(pipe => (
-            <li key={pipe.id}><Pipe name={pipe.name} cards_count={pipe.cards_count} color={pipe.color} /></li>
+            <WrapItem key={pipe.id}><Pipe name={pipe.name} cards_count={pipe.cards_count} color={pipe.color} /></WrapItem>
         ))}
-      </S.ListContainer>
-    </S.Wrapper>
+      </Wrap>    
   );
 }
 

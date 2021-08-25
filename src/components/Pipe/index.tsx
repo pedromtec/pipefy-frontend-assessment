@@ -1,15 +1,18 @@
 import type { OrganizationPipe } from '../../graphql/types'
-import * as S from './styles'
+import { Box, Heading, Text, Button } from "@chakra-ui/react"
 
 type PipeProps = Omit<OrganizationPipe, 'id'>
 
-export function Pipe({ name, cards_count, color }: PipeProps) {
+export function Pipe({ name, cards_count }: PipeProps) {
     return (
-        <S.Wrapper color={color}>
-            <S.Info>
-                <S.Name>{name}</S.Name>
-                <S.CardsCount>{cards_count} cards</S.CardsCount>
-            </S.Info>
-        </S.Wrapper>
+        <Box  w="180px" h="200px" bg="papayawhip" borderRadius="lg">
+          <Heading  as="h3" size="md" >
+              {name}
+          </Heading>
+          <Text>{cards_count} cards</Text>
+          <Button colorScheme="teal" size="xs">
+            Show cards
+          </Button>
+        </Box>
     )
 }
