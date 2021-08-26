@@ -25,7 +25,7 @@ export function PipesList() {
 
   const { search } = usePipesContext()
   const lowerCaseSearch = search.toLocaleLowerCase()
-
+  // Todo: Fix sort
   const pipes = useMemo(
     () =>
       data?.organization.pipes
@@ -36,24 +36,6 @@ export function PipesList() {
     [data?.organization.pipes, lowerCaseSearch]
   )
 
-  if (loading) {
-    return (
-      <Wrap
-        spacing="8"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-        display="flex"
-      >
-        {Array.from({ length: SKELETONS }).map((_, index) => (
-          <WrapItem key={index}>
-            <Skeleton height="200px" width="180px" />
-          </WrapItem>
-        ))}
-      </Wrap>
-    )
-  }
-
   return (
     <Wrap
       spacing="8"
@@ -62,11 +44,17 @@ export function PipesList() {
       height="100%"
       display="flex"
     >
-      {pipes?.map((pipe) => (
-        <WrapItem key={pipe.id}>
-          <Pipe pipe={pipe} />
-        </WrapItem>
-      ))}
+      {loading
+        ? Array.from({ length: SKELETONS }).map((_, index) => (
+            <WrapItem key={index}>
+              <Skeleton height="200px" width="180px" />
+            </WrapItem>
+          ))
+        : pipes?.map((pipe) => (
+            <WrapItem key={pipe.id}>
+              <Pipe pipe={pipe} />
+            </WrapItem>
+          ))}
     </Wrap>
   )
 }

@@ -1,7 +1,19 @@
 import { Box, Flex, IconButton, Stack } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 
-export function Pagination() {
+type PaginationProps = {
+  hasNextPage: boolean
+  hasPreviousPage: boolean
+  onNextClick: () => void
+  onPreviousClick: () => void
+}
+
+export function Pagination({
+  hasNextPage,
+  hasPreviousPage,
+  onNextClick,
+  onPreviousClick
+}: PaginationProps) {
   return (
     <Flex
       direction="row"
@@ -14,14 +26,18 @@ export function Pagination() {
       </Box>
       <Stack direction="row" spacing="2">
         <IconButton
+          onClick={onPreviousClick}
           size="sm"
           aria-label="Previous page"
           icon={<ArrowBackIcon />}
+          disabled={!hasPreviousPage}
         />
         <IconButton
+          onClick={onNextClick}
           size="sm"
           aria-label="Next page"
           icon={<ArrowForwardIcon />}
+          disabled={!hasNextPage}
         />
       </Stack>
     </Flex>

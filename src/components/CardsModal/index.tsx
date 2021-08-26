@@ -20,7 +20,14 @@ export function CardsModal() {
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={handleClose} size="xl">
+      <Modal
+        isOpen={isOpen}
+        onClose={handleClose}
+        size="xl"
+        isCentered
+        motionPreset="slideInBottom"
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{selectedPipe?.name} - Cards</ModalHeader>

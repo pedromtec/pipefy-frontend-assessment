@@ -19,6 +19,12 @@ export type QueryOrganizationVariables = {
 
 export type QueryCards = {
   cards: {
+    pageInfo: {
+      endCursor: string
+      hasNextPage: boolean
+      hasPreviousPage: boolean
+      startCursor: string
+    }
     edges: {
       node: {
         title?: string
@@ -29,8 +35,11 @@ export type QueryCards = {
     }[]
   }
 }
-
 export type QueryCardsVariables = {
+  cardsLast?: number
   cardsPipeId: string
   cardsFirst?: number
+  cardsBefore?: string
+  cardsAfter?: string
+  cardsSearch?: string
 }
