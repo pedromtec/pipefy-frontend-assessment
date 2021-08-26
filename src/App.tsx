@@ -1,6 +1,7 @@
-import { Container, Stack } from "@chakra-ui/react";
-import { Header } from "./components/Header";
-import { PipesList } from "./components/PipesList";
+import { Container, Stack } from '@chakra-ui/react'
+import { CardsModal } from './components/CardsModal'
+import { Header } from './components/Header'
+import { PipesList } from './components/PipesList'
 
 function App() {
   return (
@@ -9,8 +10,9 @@ function App() {
         <Header />
         <PipesList />
       </Stack>
+      <CardsModal />
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App

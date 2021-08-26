@@ -1,34 +1,35 @@
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-  } from "@chakra-ui/react"
-import { CardsTable } from "../CardsTable"
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton
+} from '@chakra-ui/react'
+import { usePipesContext } from '../../contexts/PipesContext'
+import { CardsTable } from '../CardsTable'
 
-type CardsModalProps = {
-    pipeId: string
-    isOpen: boolean
-    onClose: () => void
-}
+export function CardsModal() {
+  const { selectedPipe, setSelectedPipe } = usePipesContext()
 
-export function CardsModal({isOpen, onClose, pipeId}: CardsModalProps) {
-    return (
-      <>
-        <Modal isOpen={isOpen} onClose={onClose} size="xl">
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-                <CardsTable pipeId={pipeId}/>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </>
-    )
+  const isOpen = !!selectedPipe
+
+  const handleClose = () => {
+    setSelectedPipe(undefined)
   }
+
+  return (
+    <>
+      <Modal isOpen={isOpen} onClose={handleClose} size="xl">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{selectedPipe?.name} - Cards</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <CardsTable pipeId={selectedPipe?.id} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  )
+}

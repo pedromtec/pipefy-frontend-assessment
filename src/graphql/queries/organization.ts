@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const QUERY_ORGANIZATION = gql`
   query QueryOrganization($organizationId: ID!) {
@@ -8,7 +8,8 @@ export const QUERY_ORGANIZATION = gql`
         cards_count
         name
         id
-        icon 
+        icon
       }
     }
-}`
+  }
+`
