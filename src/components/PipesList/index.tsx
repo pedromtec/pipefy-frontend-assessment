@@ -5,11 +5,13 @@ import type {
   QueryOrganizationVariables
 } from '../../graphql/types'
 import { Pipe } from '../Pipe'
-import { Wrap, WrapItem } from '@chakra-ui/react'
+import { Skeleton, Wrap, WrapItem } from '@chakra-ui/react'
 import { usePipesContext } from '../../contexts/PipesContext'
 import { useMemo } from 'react'
 
 const organizationId = '300562393'
+
+const SKELETONS = 12
 
 export function PipesList() {
   const { data, loading } = useQuery<
@@ -35,7 +37,21 @@ export function PipesList() {
   )
 
   if (loading) {
-    return <p>Loading ...</p>
+    return (
+      <Wrap
+        spacing="8"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+        display="flex"
+      >
+        {Array.from({ length: SKELETONS }).map((_, index) => (
+          <WrapItem key={index}>
+            <Skeleton height="200px" width="180px" />
+          </WrapItem>
+        ))}
+      </Wrap>
+    )
   }
 
   return (
