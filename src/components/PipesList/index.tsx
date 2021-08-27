@@ -49,7 +49,7 @@ export function PipesList() {
   return (
     <SimpleGrid gap="20px" columns={[1, 3, 4, 5]}>
       {loading ? (
-        <Skeletons quantity={12} />
+        <Skeletons quantity={15} />
       ) : (
         pipes?.map((pipe) => (
           <Flex key={pipe.id} justifyContent={['center']}>
