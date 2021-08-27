@@ -16,8 +16,8 @@ export function Pipe({ pipe }: PipeProps) {
   return (
     <>
       <Box
-        w="180px"
-        h="200px"
+        w="11.25rem"
+        h="12.5rem"
         bg={`${pipe.color}.200`}
         borderRadius="lg"
         padding="3"

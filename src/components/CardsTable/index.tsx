@@ -63,7 +63,7 @@ export function CardsTable({ pipeId }: CardTableProps) {
         <Thead>
           <Tr>
             <Th>Title</Th>
-            <Th>Date</Th>
+            <Th width="10rem">Date</Th>
             <Th>Done</Th>
           </Tr>
         </Thead>

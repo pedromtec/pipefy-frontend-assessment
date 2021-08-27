@@ -5,13 +5,21 @@ import type {
   QueryOrganizationVariables
 } from '../../graphql/types'
 import { Pipe } from '../Pipe'
-import { Skeleton, Wrap, WrapItem } from '@chakra-ui/react'
+import { Flex, SimpleGrid, Skeleton, WrapItem } from '@chakra-ui/react'
 import { usePipesContext } from '../../contexts/PipesContext'
 import { useMemo } from 'react'
 
-const organizationId = '300562393'
+const Skeletons = ({ quantity }: { quantity: number }) => (
+  <>
+    {Array.from({ length: quantity }).map((_, index) => (
+      <WrapItem key={index}>
+        <Skeleton height="200px" width="100%" />
+      </WrapItem>
+    ))}
+  </>
+)
 
-const SKELETONS = 12
+const ORGANIZATION_ID = '300562393'
 
 export function PipesList() {
   const { data, loading } = useQuery<
@@ -19,42 +27,36 @@ export function PipesList() {
     QueryOrganizationVariables
   >(QUERY_ORGANIZATION, {
     variables: {
-      organizationId
+      organizationId: ORGANIZATION_ID
     }
   })
 
   const { search } = usePipesContext()
   const lowerCaseSearch = search.toLocaleLowerCase()
-  // Todo: Fix sort
+
   const pipes = useMemo(
     () =>
       data?.organization.pipes
         .filter((pipe) =>
           pipe.name?.toLocaleLowerCase().includes(lowerCaseSearch)
         )
-        .sort((pipeA, pipeB) => pipeA.name!.localeCompare(pipeB.name!)),
+        .sort((pipeA, pipeB) =>
+          pipeA.name!.trim().localeCompare(pipeB.name!.trim())
+        ),
     [data?.organization.pipes, lowerCaseSearch]
   )
 
   return (
-    <Wrap
-      spacing="8"
-      justifyContent="center"
-      alignItems="center"
-      height="100%"
-      display="flex"
-    >
-      {loading
-        ? Array.from({ length: SKELETONS }).map((_, index) => (
-            <WrapItem key={index}>
-              <Skeleton height="200px" width="180px" />
-            </WrapItem>
-          ))
-        : pipes?.map((pipe) => (
-            <WrapItem key={pipe.id}>
-              <Pipe pipe={pipe} />
-            </WrapItem>
-          ))}
-    </Wrap>
+    <SimpleGrid gap="20px" columns={[1, 3, 4, 5]}>
+      {loading ? (
+        <Skeletons quantity={12} />
+      ) : (
+        pipes?.map((pipe) => (
+          <Flex key={pipe.id} justifyContent={['center']}>
+            <Pipe pipe={pipe} />
+          </Flex>
+        ))
+      )}
+    </SimpleGrid>
   )
 }

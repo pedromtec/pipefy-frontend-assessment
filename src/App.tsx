@@ -5,7 +5,7 @@ import { PipesList } from './components/PipesList'
 
 function App() {
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.lg" paddingBottom="4rem">
       <Stack>
         <Header />
         <PipesList />

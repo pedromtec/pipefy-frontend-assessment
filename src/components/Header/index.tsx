@@ -13,9 +13,16 @@ export function Header() {
   //Todo: search update using debounce to avoid a lot of renders
 
   return (
-    <Flex padding="2rem 0" alignItems="center" justifyContent="space-between">
-      <Heading textAlign="center">Your Pipes</Heading>
-      <InputGroup width="50%">
+    <Flex
+      padding={['1rem 0', '2rem 0']}
+      alignItems="center"
+      justifyContent={['center', 'space-between']}
+      flexWrap="wrap"
+    >
+      <Heading textAlign="center" paddingBottom={['0.8rem']}>
+        Your Pipes
+      </Heading>
+      <InputGroup width={['90%', '50%']}>
         <InputLeftElement
           pointerEvents="none"
           children={<SearchIcon color="gray.900" />}
